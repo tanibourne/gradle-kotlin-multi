@@ -1,5 +1,8 @@
 import org.springframework.boot.gradle.tasks.bundling.BootJar
 
+val jar: Jar by tasks
+val bootJar: BootJar by tasks
+
 plugins {
 	java
 	id("org.springframework.boot") version "3.0.6"
@@ -37,7 +40,6 @@ subprojects {
 	//루트 하위 모듈에서 공통 dependencies
 
 	dependencies{
-
 		testImplementation("org.springframework.boot:spring-boot-starter-test")
 		developmentOnly("org.springframework.boot:spring-boot-devtools")
 		compileOnly("org.projectlombok:lombok")
@@ -54,8 +56,7 @@ tasks.withType<Test> {
 
 project(":module-core") {
 
-	val jar: Jar by tasks
-	val bootJar: BootJar by tasks
+
 
 	bootJar.enabled = false // 실행 가능한 Jar파일을 생성하는것을 하지 않는다. 만약 도메인과
 	jar.enabled = true // 기본 JAR파일 생성 활성화 한다 기본 옵션이 true지만 명시
